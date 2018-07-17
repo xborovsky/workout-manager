@@ -12,10 +12,23 @@
     display: flex;
 }
 
+.muscles-list .card {
+    cursor: pointer;
+}
+
+.muscles-list .card:hover {
+    background-color: #e9ecef;
+}
+
 .card {
     margin-top: 10px;
     margin-bottom: 10px;
     flex-grow: 100;
+}
+
+.card h2 {
+    font-size: 18pt;
+    text-align: center;
 }
 
 .card h3 {

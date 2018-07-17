@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { fetchMusles } from '../../api/api';
 import BlockLoader from '../common/BlockLoader';
 import Auxiliary from '../common/Auxiliary';
+import { withRouter } from 'react-router-dom';
 
 class Muscles extends Component {
 
@@ -24,14 +25,23 @@ class Muscles extends Component {
 
         return muscles.map((muscle) =>
             (front && muscle['is_front']) || (!front && !muscle['is_front']) ?
-                <div className="col-sm-3">
-                    <div className="card" key={muscle.id}>
+                <div className="col-sm-3" key={muscle.id}>
+                    <div className="card" onClick={() => this.navigateToExercises(muscle.id, muscle.name)}>
                         <div className="card-body">
                             <h3>{muscle.name}</h3>
                         </div>
                     </div>
                 </div> : null
         );
+    }
+
+    navigateToExercises(muscleId, muscleName) {
+        this.props.history.push({
+            pathname: `/exercises/${muscleId}`,
+            state : {
+                muscleName
+            }
+        });
     }
 
     render() {
@@ -53,4 +63,4 @@ class Muscles extends Component {
     }
 }
 
-export default Muscles;
+export default withRouter(Muscles);
