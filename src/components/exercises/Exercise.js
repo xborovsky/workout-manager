@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ExerciseMuscles from './ExerciseMuscles';
 import ExerciseEquipment from './ExerciseEquipment';
+import ExerciseImages from './ExerciseImages';
 
 class Exercise extends Component {
     constructor(props) {
@@ -28,6 +29,9 @@ class Exercise extends Component {
                         <h2>{exercise.name}</h2>
                         <div className="card-text">
                             {exercise.description.replace(/<(?:.|\n)*?>/gm, '')}
+                        </div>
+                        <div className="container">
+                            <ExerciseImages exerciseId={exercise.id} />
                         </div>
                         <div className="container">
                             <ExerciseMuscles isPrimary={true} muscleIds={exercise.muscles} allMuscles={allMuscles} />

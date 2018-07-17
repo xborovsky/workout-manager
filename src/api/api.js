@@ -18,3 +18,6 @@ export const fetchExercises = (muscleId, pageNum) =>
                 hasNextPage : res.data.next !== null
             };
         });
+
+export const fetchExerciseImages = (exerciseId) => axios.get(`${BASE_URL}/exerciseimage?exercise=${exerciseId}`)
+    .then(res => res.data.results);
