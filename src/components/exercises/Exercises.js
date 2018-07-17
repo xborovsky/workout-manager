@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { fetchExercises, fetchMusles } from '../../api/api';
+import { fetchExercises, fetchMusles, fetchEquipment } from '../../api/api';
 import BlockLoader from '../common/BlockLoader';
 import Exercise from './Exercise';
 
@@ -8,7 +8,8 @@ class Exercises extends Component {
         super(props);
         this.state = {
             exercises : [],
-            allMuscles : []
+            allMuscles : [],
+            allEquipment : []
         };
     }
 
@@ -16,17 +17,20 @@ class Exercises extends Component {
         fetchExercises(this.props.match.params.muscleId)
             .then(exercises => this.setState({exercises}));
         fetchMusles().then(muscles => this.setState({allMuscles : muscles}));
+        fetchEquipment().then(equipment => this.setState({allEquipment : equipment}))
     }
 
     render() {
-        const { exercises, allMuscles } = this.state;
+        const { exercises, allMuscles, allEquipment } = this.state;
 
         return (
             <div className="row">
                 <h2><small>Exercises for </small> {this.props.location.state.muscleName} <small>muscles</small></h2>
-                {exercises ?
-                    exercises.map((exercise) => <Exercise key={exercise.id} exercise={exercise} allMuscles={allMuscles} />) :
-                    <BlockLoader />}
+                <div className="row">
+                    {exercises ?
+                        exercises.map((exercise) => <Exercise key={exercise.id} exercise={exercise} allMuscles={allMuscles} allEquipment={allEquipment} />) :
+                        <BlockLoader />}
+                </div>
             </div>
         );
     }

@@ -7,5 +7,8 @@ const DEFAULT_LANG_ID = 2;
 export const fetchMusles = () => axios.get(`${BASE_URL}/muscle`)
     .then((res) => res.data.results);
 
+export const fetchEquipment = () => axios.get(`${BASE_URL}/equipment`)
+    .then((res) => res.data.results);
+
 export const fetchExercises = (muscleId) => axios.get(`${BASE_URL}/exercise?muscles=${muscleId}&language=${DEFAULT_LANG_ID}`)
     .then((res) => res.data.results); // TODO load next?

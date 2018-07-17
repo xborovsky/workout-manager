@@ -35,3 +35,17 @@
     font-size: 12pt;
     text-align: center;
 }
+
+.card.exercises {
+    padding: 10px;
+}
+
+.card.exercises .card-text {
+    margin-top: 10px;
+}
+
+.card.exercises .list-group {
+    width: 75%;
+    margin: -10px auto 10px;
+    font-size: 0.8rem;
+}
